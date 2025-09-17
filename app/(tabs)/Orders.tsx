@@ -1,9 +1,10 @@
+import styles from '@/app/styles/orderStyles';
 import { Feather } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { LinearGradient } from 'expo-linear-gradient';
 import React, { useEffect, useState } from 'react';
-import { ActivityIndicator, FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { ActivityIndicator, FlatList, Text, TouchableOpacity, View } from 'react-native';
 
 interface OrderItem {
   dish: string;
@@ -43,7 +44,7 @@ const Orders = () => {
         const data = await response.json();
         if (response.ok) {
           setOrders(data.orders);
-          setFilteredOrders(data.orders); // Initially, show all orders
+          setFilteredOrders(data.orders);
         } else {
           setError(data.message || 'Failed to fetch orders');
         }
@@ -57,7 +58,6 @@ const Orders = () => {
     fetchOrders();
   }, []);
 
-  // Filter orders based on selected date
   useEffect(() => {
     if (selectedDate) {
       const startOfDay = new Date(selectedDate);
@@ -191,169 +191,3 @@ const Orders = () => {
 };
 
 export default Orders;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#f5f5f5',
-  },
-  center: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#f5f5f5',
-  },
-  header: {
-    paddingVertical: 40,
-    paddingHorizontal: 20,
-    borderBottomLeftRadius: 20,
-    borderBottomRightRadius: 20,
-    alignItems: 'center',
-  },
-  headerTitle: {
-    fontSize: 28,
-    fontFamily: 'Outfit-Bold',
-    color: '#fff',
-  },
-  headerSubtitle: {
-    fontSize: 16,
-    fontFamily: 'Outfit-Regular',
-    color: '#fff',
-    marginTop: 8,
-  },
-  listContainer: {
-    padding: 20,
-  },
-  orderCard: {
-    backgroundColor: '#fff',
-    borderRadius: 15,
-    marginBottom: 15,
-    elevation: 5,
-    shadowColor: '#000',
-    shadowOpacity: 0.2,
-    shadowRadius: 8,
-    shadowOffset: { width: 0, height: 4 },
-    padding: 20,
-    overflow: 'hidden',
-  },
-  orderHeader: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom: 16,
-    borderBottomWidth: 1,
-    borderBottomColor: '#f0f0f0',
-    paddingBottom: 12,
-  },
-  orderDate: {
-    fontSize: 16,
-    fontFamily: 'Outfit-Medium',
-    color: '#333',
-  },
-  orderPayment: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  paymentMode: {
-    fontSize: 12,
-    fontFamily: 'Outfit-Regular',
-    color: '#eb7d34',
-    marginLeft: 4,
-  },
-  orderItemsList: {
-    maxHeight: 200,
-  },
-  orderItemRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    paddingVertical: 8,
-    borderBottomWidth: 1,
-    borderBottomColor: '#f8f8f8',
-  },
-  orderItemName: {
-    fontSize: 16,
-    fontFamily: 'Outfit-Regular',
-    color: '#333',
-    flex: 1,
-  },
-  orderItemDetails: {
-    alignItems: 'flex-end',
-  },
-  orderItemQuantity: {
-    fontSize: 14,
-    fontFamily: 'Outfit-Regular',
-    color: '#666',
-  },
-  orderItemSubtotal: {
-    fontSize: 14,
-    fontFamily: 'Outfit-SemiBold',
-    color: '#eb7d34',
-  },
-  orderFooter: {
-    alignItems: 'flex-end',
-    marginTop: 12,
-    paddingTop: 12,
-    borderTopWidth: 1,
-    borderTopColor: '#f0f0f0',
-  },
-  totalLabel: {
-    fontSize: 18,
-    fontFamily: 'Outfit-Bold',
-    color: '#eb7d34',
-  },
-  emptyContainer: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingVertical: 50,
-  },
-  emptyText: {
-    fontSize: 16,
-    fontFamily: 'Outfit-Regular',
-    color: '#333',
-    marginTop: 10,
-    textAlign: 'center',
-  },
-  loadingText: {
-    fontSize: 16,
-    fontFamily: 'Outfit-Regular',
-    color: '#333',
-    marginTop: 10,
-  },
-  errorText: {
-    fontSize: 16,
-    fontFamily: 'Outfit-Regular',
-    color: '#333',
-    marginTop: 10,
-    textAlign: 'center',
-  },
-  filterContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    padding: 20,
-  },
-  filterButton: {
-    backgroundColor: '#eb7d34',
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-    borderRadius: 10,
-  },
-  filterButtonText: {
-    fontSize: 16,
-    fontFamily: 'Outfit-Medium',
-    color: '#fff',
-  },
-  clearButton: {
-    backgroundColor: '#fff',
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-    borderRadius: 10,
-    borderWidth: 1,
-    borderColor: '#eb7d34',
-  },
-  clearButtonText: {
-    fontSize: 16,
-    fontFamily: 'Outfit-Medium',
-    color: '#eb7d34',
-  },
-});
