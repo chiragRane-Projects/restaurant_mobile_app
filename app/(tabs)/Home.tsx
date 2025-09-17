@@ -100,7 +100,7 @@ const Home = () => {
           horizontal
           keyExtractor={item => item.id}
           showsHorizontalScrollIndicator={false}
-          contentContainerStyle={{ paddingHorizontal: 20, paddingBottom: 50 }}
+          contentContainerStyle={{ paddingHorizontal: 20, paddingBottom: 20 }}
           renderItem={({ item }) => (
             <TouchableOpacity style={styles.dishCard}>
               <Image source={item.image} style={styles.dishImage} />
@@ -115,6 +115,21 @@ const Home = () => {
             </TouchableOpacity>
           )}
         />
+      </View>
+
+      {/* CTA Section */}
+      <View style={styles.ctaContainer}>
+        <LinearGradient colors={['#eb7d34', '#ff9a5a']} style={styles.ctaGradient}>
+          <Text style={styles.ctaTitle}>Hungry for More?</Text>
+          <Text style={styles.ctaSubtitle}>Discover our full menu and order now!</Text>
+          <TouchableOpacity
+            style={styles.ctaButton}
+            onPress={() => router.push('/(tabs)/Menu')}
+          >
+            <Text style={styles.ctaButtonText}>Explore Menu</Text>
+            <Feather name="arrow-right" size={20} color="#000" style={styles.ctaButtonIcon} />
+          </TouchableOpacity>
+        </LinearGradient>
       </View>
     </ScrollView>
   );
@@ -262,5 +277,45 @@ const styles = StyleSheet.create({
     fontSize: 15,
     color: '#eb7d34',
     marginTop: 6,
+  },
+  ctaContainer: {
+    marginVertical: 30,
+    paddingHorizontal: 20,
+  },
+  ctaGradient: {
+    borderRadius: 15,
+    padding: 20,
+    alignItems: 'center',
+  },
+  ctaTitle: {
+    fontSize: 22,
+    fontFamily: 'Outfit-Bold',
+    color: '#fff',
+    marginBottom: 10,
+  },
+  ctaSubtitle: {
+    fontSize: 16,
+    fontFamily: 'Outfit-Regular',
+    color: '#fff',
+    marginBottom: 20,
+    textAlign: 'center',
+  },
+  ctaButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#fff',
+    borderRadius: 25,
+    paddingVertical: 12,
+    paddingHorizontal: 20,
+    elevation: 3,
+  },
+  ctaButtonText: {
+    fontSize: 16,
+    fontFamily: 'Outfit-SemiBold',
+    color: '#eb7d34',
+    marginRight: 10,
+  },
+  ctaButtonIcon: {
+    marginLeft: 5,
   },
 });
