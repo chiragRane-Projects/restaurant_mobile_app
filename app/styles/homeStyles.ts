@@ -31,7 +31,7 @@ export default StyleSheet.create({
     },
     subGreeting: {
         fontSize: 16,
-        fontFamily: 'Outfit-Regular',
+        fontFamily: 'Outfit',
         color: '#fff',
         marginTop: 8,
     },
@@ -95,7 +95,7 @@ export default StyleSheet.create({
         marginBottom: 8,
     },
     categoryText: {
-        fontFamily: 'Outfit-Medium',
+        fontFamily: 'Outfit',
         fontSize: 14,
         color: '#333',
     },
@@ -120,7 +120,7 @@ export default StyleSheet.create({
         padding: 10,
     },
     dishName: {
-        fontFamily: 'Outfit-Medium',
+        fontFamily: 'Outfit',
         fontSize: 15,
         color: '#333',
     },
@@ -130,7 +130,7 @@ export default StyleSheet.create({
         marginTop: 4,
     },
     dishRating: {
-        fontFamily: 'Outfit-Regular',
+        fontFamily: 'Outfit',
         fontSize: 13,
         color: '#555',
         marginLeft: 4,
@@ -158,7 +158,7 @@ export default StyleSheet.create({
     },
     ctaSubtitle: {
         fontSize: 16,
-        fontFamily: 'Outfit-Regular',
+        fontFamily: 'Outfit',
         color: '#fff',
         marginBottom: 20,
         textAlign: 'center',

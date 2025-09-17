@@ -25,7 +25,7 @@ export default StyleSheet.create({
   },
   headerSubtitle: {
     fontSize: 16,
-    fontFamily: 'Outfit-Regular',
+    fontFamily: 'Outfit',
     color: '#fff',
     marginTop: 8,
   },
@@ -70,7 +70,7 @@ export default StyleSheet.create({
   },
   cartItemPrice: {
     fontSize: 14,
-    fontFamily: 'Outfit-Regular',
+    fontFamily: 'Outfit',
     color: '#666',
     marginTop: 6,
   },
@@ -85,7 +85,7 @@ export default StyleSheet.create({
   },
   quantity: {
     fontSize: 16,
-    fontFamily: 'Outfit-Medium',
+    fontFamily: 'Outfit',
     color: '#333',
     marginHorizontal: 16,
     minWidth: 24,
@@ -110,7 +110,7 @@ export default StyleSheet.create({
   },
   emptyText: {
     fontSize: 18,
-    fontFamily: 'Outfit-Regular',
+    fontFamily: 'Outfit',
     color: '#333',
     marginTop: 12,
     textAlign: 'center',
@@ -124,7 +124,7 @@ export default StyleSheet.create({
   },
   menuButtonText: {
     fontSize: 16,
-    fontFamily: 'Outfit-Medium',
+    fontFamily: 'Outfit',
     color: '#fff',
   },
   checkoutContainer: {
@@ -145,7 +145,7 @@ export default StyleSheet.create({
   },
   totalLabel: {
     fontSize: 18,
-    fontFamily: 'Outfit-Regular',
+    fontFamily: 'Outfit',
     color: '#333',
   },
   totalAmount: {
@@ -158,7 +158,7 @@ export default StyleSheet.create({
   },
   paymentLabel: {
     fontSize: 16,
-    fontFamily: 'Outfit-Medium',
+    fontFamily: 'Outfit',
     color: '#333',
     marginBottom: 12,
   },
@@ -182,7 +182,7 @@ export default StyleSheet.create({
   },
   paymentOptionText: {
     fontSize: 14,
-    fontFamily: 'Outfit-Medium',
+    fontFamily: 'Outfit',
     color: '#666',
   },
   selectedPaymentOptionText: {
@@ -201,13 +201,13 @@ export default StyleSheet.create({
   },
   loadingText: {
     fontSize: 16,
-    fontFamily: 'Outfit-Regular',
+    fontFamily: 'Outfit',
     color: '#333',
     marginTop: 12,
   },
   errorText: {
     fontSize: 16,
-    fontFamily: 'Outfit-Regular',
+    fontFamily: 'Outfit',
     color: '#333',
     marginTop: 12,
     textAlign: 'center',

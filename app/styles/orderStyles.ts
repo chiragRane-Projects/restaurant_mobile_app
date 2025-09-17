@@ -25,7 +25,7 @@ export default StyleSheet.create({
     },
     headerSubtitle: {
         fontSize: 16,
-        fontFamily: 'Outfit-Regular',
+        fontFamily: 'Outfit',
         color: '#fff',
         marginTop: 8,
     },
@@ -55,7 +55,7 @@ export default StyleSheet.create({
     },
     orderDate: {
         fontSize: 16,
-        fontFamily: 'Outfit-Medium',
+        fontFamily: 'Outfit',
         color: '#333',
     },
     orderPayment: {
@@ -64,7 +64,7 @@ export default StyleSheet.create({
     },
     paymentMode: {
         fontSize: 12,
-        fontFamily: 'Outfit-Regular',
+        fontFamily: 'Outfit',
         color: '#eb7d34',
         marginLeft: 4,
     },
@@ -80,7 +80,7 @@ export default StyleSheet.create({
     },
     orderItemName: {
         fontSize: 16,
-        fontFamily: 'Outfit-Regular',
+        fontFamily: 'Outfit',
         color: '#333',
         flex: 1,
     },
@@ -89,7 +89,7 @@ export default StyleSheet.create({
     },
     orderItemQuantity: {
         fontSize: 14,
-        fontFamily: 'Outfit-Regular',
+        fontFamily: 'Outfit',
         color: '#666',
     },
     orderItemSubtotal: {
@@ -116,20 +116,20 @@ export default StyleSheet.create({
     },
     emptyText: {
         fontSize: 16,
-        fontFamily: 'Outfit-Regular',
+        fontFamily: 'Outfit',
         color: '#333',
         marginTop: 10,
         textAlign: 'center',
     },
     loadingText: {
         fontSize: 16,
-        fontFamily: 'Outfit-Regular',
+        fontFamily: 'Outfit',
         color: '#333',
         marginTop: 10,
     },
     errorText: {
         fontSize: 16,
-        fontFamily: 'Outfit-Regular',
+        fontFamily: 'Outfit',
         color: '#333',
         marginTop: 10,
         textAlign: 'center',
@@ -148,7 +148,7 @@ export default StyleSheet.create({
     },
     filterButtonText: {
         fontSize: 16,
-        fontFamily: 'Outfit-Medium',
+        fontFamily: 'Outfit',
         color: '#fff',
     },
     clearButton: {
@@ -161,7 +161,7 @@ export default StyleSheet.create({
     },
     clearButtonText: {
         fontSize: 16,
-        fontFamily: 'Outfit-Medium',
+        fontFamily: 'Outfit',
         color: '#eb7d34',
     },
 })
