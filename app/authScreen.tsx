@@ -1,6 +1,6 @@
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import { AuthContext } from "@/context/authContext";
 import { useRouter } from "expo-router";
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import {
   ActivityIndicator,
   Animated,
@@ -16,7 +16,7 @@ import {
 
 export default function LoginScreen() {
   const router = useRouter();
-  const [step, setStep] = useState("email"); // "email" or "otp"
+  const [step, setStep] = useState("email"); 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [address, setAddress] = useState("");
@@ -26,6 +26,7 @@ export default function LoginScreen() {
   const fadeAnim = useRef(new Animated.Value(0)).current;
   const slideAnim = useRef(new Animated.Value(50)).current;
   const buttonScale = useRef(new Animated.Value(1)).current;
+  const {login} = useContext(AuthContext);
 
   const API_URL = process.env.EXPO_PUBLIC_API_URL;
 
@@ -106,8 +107,9 @@ export default function LoginScreen() {
         body: JSON.stringify({ email, otp }),
       });
       const data = await response.json();
-      if (response.ok && data.message === "OTP verified successfully") {
-        await AsyncStorage.setItem("token", data.token);
+      if (response.ok && data.message === "OTP verified successfully")
+        {
+        await login(data.token, data.customer)
         router.push("/(tabs)/Home");
       } else {
         setError(data.message || "Failed to verify OTP. Please try again.");

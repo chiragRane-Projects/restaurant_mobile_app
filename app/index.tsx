@@ -1,6 +1,8 @@
+import { AuthContext } from "@/context/authContext";
 import { useRouter } from "expo-router";
-import { useEffect, useRef } from "react";
+import { useContext, useEffect, useRef } from "react";
 import {
+  ActivityIndicator,
   Animated,
   Dimensions,
   Platform,
@@ -13,30 +15,40 @@ import {
 
 export default function OnboardingScreen() {
   const router = useRouter();
+  const { user, loading } = useContext(AuthContext);
+
   const fadeAnim = useRef(new Animated.Value(0)).current;
   const slideAnim = useRef(new Animated.Value(50)).current;
   const scaleAnim = useRef(new Animated.Value(0.9)).current;
   const buttonScale = useRef(new Animated.Value(1)).current;
 
   useEffect(() => {
-    Animated.parallel([
-      Animated.timing(fadeAnim, {
-        toValue: 1,
-        duration: 800,
-        useNativeDriver: true,
-      }),
-      Animated.timing(slideAnim, {
-        toValue: 0,
-        duration: 600,
-        useNativeDriver: true,
-      }),
-      Animated.timing(scaleAnim, {
-        toValue: 1,
-        duration: 500,
-        useNativeDriver: true,
-      }),
-    ]).start();
-  }, []);
+    if (!loading && user) {
+      router.replace("/(tabs)/Home");
+    }
+  }, [loading, user]);
+
+  useEffect(() => {
+    if (!user) {
+      Animated.parallel([
+        Animated.timing(fadeAnim, {
+          toValue: 1,
+          duration: 800,
+          useNativeDriver: true,
+        }),
+        Animated.timing(slideAnim, {
+          toValue: 0,
+          duration: 600,
+          useNativeDriver: true,
+        }),
+        Animated.timing(scaleAnim, {
+          toValue: 1,
+          duration: 500,
+          useNativeDriver: true,
+        }),
+      ]).start();
+    }
+  }, [user]);
 
   const handleContinue = () => {
     Animated.sequence([
@@ -53,23 +65,15 @@ export default function OnboardingScreen() {
     ]).start(() => router.push("/authScreen"));
   };
 
-  const handlePressIn = () => {
-    Animated.spring(buttonScale, {
-      toValue: 0.92,
-      friction: 8,
-      tension: 40,
-      useNativeDriver: true,
-    }).start();
-  };
+  if (loading) {
+    return (
+      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+        <ActivityIndicator size="large" color="#E74C3C" />
+      </View>
+    );
+  }
 
-  const handlePressOut = () => {
-    Animated.spring(buttonScale, {
-      toValue: 1,
-      friction: 8,
-      tension: 40,
-      useNativeDriver: true,
-    }).start();
-  };
+  if (user) return null; 
 
   return (
     <>
@@ -79,7 +83,6 @@ export default function OnboardingScreen() {
         translucent
       />
       <View style={styles.container}>
-        {/* Subtle Background Pattern */}
         <View style={styles.waveBackgroundTop} />
         <View style={styles.waveBackgroundBottom} />
 
@@ -92,7 +95,6 @@ export default function OnboardingScreen() {
             },
           ]}
         >
-          {/* Text Content */}
           <View style={styles.textContainer}>
             <Text style={styles.title}>Welcome to Our Restaurant</Text>
             <View style={styles.titleUnderline} />
@@ -101,13 +103,10 @@ export default function OnboardingScreen() {
             </Text>
           </View>
 
-          {/* Enhanced Button */}
           <Animated.View style={{ transform: [{ scale: buttonScale }] }}>
             <TouchableOpacity
               style={styles.button}
               onPress={handleContinue}
-              onPressIn={handlePressIn}
-              onPressOut={handlePressOut}
               activeOpacity={0.9}
             >
               <View style={styles.buttonInner}>
@@ -119,7 +118,6 @@ export default function OnboardingScreen() {
             </TouchableOpacity>
           </Animated.View>
 
-          {/* Simplified Progress Indicator */}
           <Animated.View style={[styles.progressIndicator, { opacity: fadeAnim }]}>
             <View style={styles.progressBar} />
           </Animated.View>
