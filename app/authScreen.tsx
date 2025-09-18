@@ -28,8 +28,6 @@ export default function LoginScreen() {
   const buttonScale = useRef(new Animated.Value(1)).current;
   const {login} = useContext(AuthContext);
 
-  const API_URL = process.env.EXPO_PUBLIC_API_URL;
-
   useEffect(() => {
     Animated.parallel([
       Animated.timing(fadeAnim, {
@@ -82,9 +80,11 @@ export default function LoginScreen() {
       if (response.ok && data.message === "OTP sent to email") {
         setStep("otp");
       } else {
+        console.log("Email Submission:", data.message);
         setError(data.message || "Failed to send OTP. Please try again.");
       }
     } catch (err) {
+      console.log("Email Submission:", err);
       setError("Server error. Please try again.");
     } finally {
       setLoading(false);
@@ -115,6 +115,7 @@ export default function LoginScreen() {
         setError(data.message || "Failed to verify OTP. Please try again.");
       }
     } catch (err) {
+      console.log("OTP submission:", err);
       setError("Server error. Please try again.");
     } finally {
       setLoading(false);
