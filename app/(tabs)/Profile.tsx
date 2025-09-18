@@ -77,7 +77,7 @@ const Profile = () => {
       }
 
       const apiUrl = process.env.EXPO_PUBLIC_API_URL || 'http://localhost:3000';
-      const response = await fetch(`${apiUrl}/api/orders/my-orders`, {
+      const response = await fetch("https://restaurant-admin-backend.onrender.com/api/orders/my-orders", {
         headers: { Authorization: `Bearer ${token}` },
       });
 

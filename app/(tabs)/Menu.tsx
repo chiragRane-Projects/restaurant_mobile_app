@@ -34,7 +34,6 @@ const Menu = () => {
   const [dietaryFilters, setDietaryFilters] = useState<string[]>([]);
   const fadeAnim = useRef(new Animated.Value(0)).current;
   const router = useRouter();
-  const apiUrl = process.env.EXPO_PUBLIC_API_URL || 'http://localhost:3000';
 
   useEffect(() => {
     const fetchData = async () => {
@@ -42,7 +41,7 @@ const Menu = () => {
         setLoading(true);
         const [cartStr, response] = await Promise.all([
           AsyncStorage.getItem('cart'),
-          fetch(`${apiUrl}/api/dish`, { headers: { 'Content-Type': 'application/json' } }),
+          fetch("https://restaurant-admin-backend.onrender.com/api/dish", { headers: { 'Content-Type': 'application/json' } }),
         ]);
         setCart(cartStr ? JSON.parse(cartStr) : []);
         const data = await response.json();
