@@ -21,10 +21,10 @@ backend API to handle authentication, onboarding, and order flow.
 ## 🔗 Repositories
 
 -   **Frontend (Mobile App)** → [Restaurant Mobile
-    App](https://github.com/chiragRane-Projects/restaurant_mobile_app.git)\
+    App](https://github.com/chiragRane-Projects/restaurant_mobile_app.git)
 -   **Backend (API Server)** → [Restaurant Admin
     Backend](https://github.com/chiragRane-Projects/restaurant_admin_backend.git)
--   **Admin Panel** → [Restaurant Admin Frontend] (https://github.com/chiragRane-Projects/restaurant_admin_frontend.git)
+-   **Admin Panel** → [Restaurant Admin Frontend](https://github.com/chiragRane-Projects/restaurant_admin_frontend.git)
 
 ------------------------------------------------------------------------
 
