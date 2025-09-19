@@ -28,6 +28,7 @@ const Cart = () => {
   const [error, setError] = useState<string | null>(null);
   const [paymentMode, setPaymentMode] = useState('cod');
   const router = useRouter();
+  const apiUrl = process.env.EXPO_PUBLIC_API_URL || 'http://localhost:3000';
 
   // Fetch dishes and cart data
   const fetchData = async () => {
@@ -46,7 +47,7 @@ const Cart = () => {
 
       const cart = cartStr ? JSON.parse(cartStr) : [];
 
-      const response = await fetch("https://restaurant-admin-backend.onrender.com/api/dish", {
+      const response = await fetch(`${apiUrl}/api/dish`, {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
       });
@@ -169,7 +170,7 @@ const Cart = () => {
         return;
       }
       const items = cartItems.map((item: CartItem) => ({ dish: item.id, quantity: item.quantity }));
-      const response = await fetch("https://restaurant-admin-backend.onrender.com/api/orders", {
+      const response = await fetch(`${apiUrl}/api/orders`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

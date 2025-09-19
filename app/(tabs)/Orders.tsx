@@ -28,12 +28,13 @@ const Orders = () => {
   const [error, setError] = useState<string | null>(null);
   const [showDatePicker, setShowDatePicker] = useState(false);
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
+   const apiUrl = process.env.EXPO_PUBLIC_API_URL || 'http://localhost:3000';
 
   useEffect(() => {
     const fetchOrders = async () => {
       try {
         const token = await AsyncStorage.getItem('token');
-        const response = await fetch("https://restaurant-admin-backend.onrender.com/api/orders/my-orders", {
+        const response = await fetch(`${apiUrl}/api/orders/my-orders`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',

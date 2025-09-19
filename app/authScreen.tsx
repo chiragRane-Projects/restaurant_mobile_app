@@ -16,7 +16,7 @@ import {
 
 export default function LoginScreen() {
   const router = useRouter();
-  const [step, setStep] = useState("email"); 
+  const [step, setStep] = useState("email");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [address, setAddress] = useState("");
@@ -26,7 +26,10 @@ export default function LoginScreen() {
   const fadeAnim = useRef(new Animated.Value(0)).current;
   const slideAnim = useRef(new Animated.Value(50)).current;
   const buttonScale = useRef(new Animated.Value(1)).current;
-  const {login} = useContext(AuthContext);
+  const { login } = useContext(AuthContext);
+  const apiUrl = process.env.EXPO_PUBLIC_API_URL;
+
+  console.log("🔎 ENV VAR EXPO_PUBLIC_API_URL:", process.env.EXPO_PUBLIC_API_URL);
 
   useEffect(() => {
     Animated.parallel([
@@ -62,30 +65,41 @@ export default function LoginScreen() {
   };
 
   const handleEmailSubmit = async () => {
-    if (!name || !email || !address) {
-      setError("Please fill in all fields");
-      return;
-    }
-    setError("");
-    setLoading(true);
     try {
-      const response = await fetch("https://restaurant-admin-backend.onrender.com/api/customers/email-signup", {
+      console.log("📤 Sending signup request to:", `${apiUrl}/api/customers/email-signup`);
+      console.log("📦 Payload:", { name, email, address });
+
+      const response = await fetch(`${apiUrl}/api/customers/email-signup`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ name, email, address }),
       });
-      const data = await response.json();
+
+      const text = await response.text(); // grab raw response
+      console.log("📥 Raw response:", text);
+
+      let data;
+      try {
+        data = JSON.parse(text);
+      } catch (parseErr) {
+        console.error("❌ JSON parse failed:", parseErr);
+        setError("Invalid server response");
+        return;
+      }
+
+      console.log("✅ Parsed response:", data);
+
       if (response.ok && data.message === "OTP sent to email") {
         setStep("otp");
       } else {
-        console.log("Email Submission:", data.message);
+        console.log("⚠️ Email submission failed:", data.message);
         setError(data.message || "Failed to send OTP. Please try again.");
       }
     } catch (err) {
-      console.log("Email Submission:", err);
-      setError("Server error. Please try again.");
+      console.error("❌ Fetch/network error:", err);
+      setError("Network/Server error. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -99,7 +113,7 @@ export default function LoginScreen() {
     setError("");
     setLoading(true);
     try {
-      const response = await fetch("https://restaurant-admin-backend.onrender.com/api/customers/verify-otp", {
+      const response = await fetch(`${apiUrl}/api/customers/verify-otp`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -107,8 +121,7 @@ export default function LoginScreen() {
         body: JSON.stringify({ email, otp }),
       });
       const data = await response.json();
-      if (response.ok && data.message === "OTP verified successfully")
-        {
+      if (response.ok && data.message === "OTP verified successfully") {
         await login(data.token, data.customer)
         router.push("/(tabs)/Home");
       } else {

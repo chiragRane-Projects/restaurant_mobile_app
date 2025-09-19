@@ -1,50 +1,103 @@
-# Welcome to your Expo app 👋
+# 🍽️ Restaurant Mobile App (React Native + Expo)
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+![Expo](https://img.shields.io/badge/Expo-000020?style=for-the-badge&logo=expo&logoColor=white)
+![React
+Native](https://img.shields.io/badge/React_Native-61DAFB?style=for-the-badge&logo=react&logoColor=black)
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white)
+![Express](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)
+![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white)
 
-## Get started
+------------------------------------------------------------------------
 
-1. Install dependencies
+## 📌 About
 
-   ```bash
-   npm install
-   ```
+This is the **customer-facing mobile app** for the Restaurant Management
+System.\
+Built with **Expo + React Native**, it connects seamlessly with the
+backend API to handle authentication, onboarding, and order flow.
 
-2. Start the app
+------------------------------------------------------------------------
 
-   ```bash
-   npx expo start
-   ```
+## 🔗 Repositories
 
-In the output, you'll find options to open the app in a
+-   **Frontend (Mobile App)** → [Restaurant Mobile
+    App](https://github.com/chiragRane-Projects/restaurant_mobile_app.git)\
+-   **Backend (API Server)** → [Restaurant Admin
+    Backend](https://github.com/chiragRane-Projects/restaurant_admin_backend.git)
+-   **Admin Panel** → [Restaurant Admin Frontend] (https://github.com/chiragRane-Projects/restaurant_admin_frontend.git)
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+------------------------------------------------------------------------
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## 🚀 Features
 
-## Get a fresh project
+-   📱 Cross-platform (iOS + Android)\
+-   🔑 OTP-based authentication (email)\
+-   🛒 Customer onboarding (name, email, address)\
+-   🧾 Orders connected to admin panel backend\
+-   ⚡ File-based routing with
+    [expo-router](https://expo.github.io/router/)
 
-When you're ready, run:
+------------------------------------------------------------------------
 
-```bash
-npm run reset-project
+## 🛠️ Getting Started
+
+### 1️⃣ Install dependencies
+
+``` bash
+npm install
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+### 2️⃣ Start the app
 
-## Learn more
+``` bash
+npx expo start
+```
 
-To learn more about developing your project with Expo, look at the following resources:
+### 3️⃣ Run on device/emulator
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+-   ✅ Development build\
+-   📱 Android Emulator\
+-   🍏 iOS Simulator\
+-   🚀 [Expo Go](https://expo.dev/go) (for quick sandbox testing)
 
-## Join the community
+------------------------------------------------------------------------
 
-Join our community of developers creating universal apps.
+## 📂 Project Structure
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+    app/              # File-based routing
+    context/          # Auth & global context
+    components/       # Reusable UI components
+    assets/           # Fonts, images, icons
+
+------------------------------------------------------------------------
+
+## 🔑 Environment Variables
+
+Create a `.env` file in the root:
+
+``` env
+EXPO_PUBLIC_API_URL=https://your-backend-url
+```
+
+------------------------------------------------------------------------
+
+## 📚 Learn More
+
+-   [Expo Docs](https://docs.expo.dev/)\
+-   [React Native Docs](https://reactnative.dev/)\
+-   [Expo Router](https://expo.github.io/router/)
+
+------------------------------------------------------------------------
+
+## 👨‍💻 Author
+
+**Chirag**
+
+[![Portfolio](https://img.shields.io/badge/Portfolio-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://chirag-rane.vercel.app/)\
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/chirag-rane-2a7ba5270/)
+
+------------------------------------------------------------------------
+
+## 🌟 Support
+
+If you found this project helpful, please ⭐️ the repo and share it!
